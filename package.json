@@ -1,0 +1,14 @@
+{
+  "name": "nightlife_app",
+  "version": "1.0.0",
+  "description": "Nightlife Coordination FCC challenge solution",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "leakvoid",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
