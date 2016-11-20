@@ -1,7 +1,39 @@
-
 <% include ../shared/header %>
 
-<h1>Home Page</h1>
+<h1>Search bar in region:</h1>
+
+<input type="text" placeholder="Enter your location" id="search_input_field">
+<input type="submit" value="Search" id="search_button">
+
+<div id="search_result_field">
+  <% if(auth_status) { %>
+    <table>
+      <% last_search_result.forEach( function(search_i) { %>
+        <tr>
+          <td rowspan="2">
+            <img src="<%= search_i.image_url %>" alt="business_image" height="100" width="100">
+          </td>
+          <th>
+            <a href="<%= search_i.url %>"><%= search_i.name %></a>
+          </th>
+          <td>
+            <% if(search_i.followed_status) { %>
+              <input type="submit" value="Unfollow" class="unfollow_button" id="<%= search_i.name %>">
+            <% } else { %>
+              <input type="submit" value="Follow" class="follow_button" id="<%= search_i.name %>">
+            <% } %>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <%= search_i.snippet_text %>
+          </td>
+        </tr>
+      <% }); %>
+    </table>
+  <% } %>
+</div>
+
+<script type="text/javascript" src="client_js/home.js"></script>
 
 <% include ../shared/footer %>
-

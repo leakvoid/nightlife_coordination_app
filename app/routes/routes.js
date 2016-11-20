@@ -11,6 +11,15 @@ module.exports = function(app, passport) {
     app.route('/')
         .get(main_controller.home);
 
+    app.route('/search')
+        .post(main_controller.search);
+
+    app.route('/follow')
+        .post(main_controller.follow);
+
+    app.route('/unfollow')
+        .post(main_controller.unfollow);
+
     app.route('/logout')
         .get(function(req, res) {
             req.logout();

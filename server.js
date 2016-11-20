@@ -1,14 +1,15 @@
 'use strict';
 
+require('dotenv').load();
+
 var express = require('express');
 var routes = require('./app/routes/routes.js');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var session = require('express-session');
-var bodyParser = require('body-parser');//CHECK
+var bodyParser = require('body-parser');
 
 var app = express();
-require('dotenv').load();
 require('./app/config/passport')(passport);
 
 app.set('views', require('path').join(__dirname, 'app/views'));
@@ -18,6 +19,7 @@ mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGO_URI);
 
 app.use('/controllers', express.static(process.cwd() + '/app/controllers'));//CHECK
+app.use('/client_js', express.static(process.cwd() + '/app/views/main'));
 
 app.use(bodyParser.urlencoded({
     extended: true
